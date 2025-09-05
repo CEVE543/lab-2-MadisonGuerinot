@@ -351,9 +351,9 @@ plot_stations()
 Let's say we want to study rainfall at a particular point. We'll use Rice University in Houston as our example:
 
 ```{julia}
-target_location = "Rice University"  # <1>
-target_lon = -95.404970              # <2>
-target_lat = 29.718952               # <3>
+target_location = "Beaumont"  # <1>
+target_lon = -94.126499           # <2>
+target_lat = 30.074164       # <3>
 ```
 
 1. Descriptive name for our target location (change this for different places!)
@@ -500,10 +500,9 @@ Now we'll work with a GEV distribution to create return period plots and compare
 ```{julia}
 # GEV parameters for Houston area (units: inches)
 # Try modifying these values to better fit your data!
-μ = 4.0    # Location parameter - shifts the distribution left/right
-σ = 1.3    # Scale parameter - controls spread (must be > 0)
-ξ = 0.15   # Shape parameter - controls tail behavior
-
+μ = 3.5    # Location parameter - shifts the distribution left/right
+σ = 1.2   # Scale parameter - controls spread (must be > 0)
+ξ = .3 # Shape parameter - controls tail behavior
 houston_gev = GeneralizedExtremeValue(μ, σ, ξ)  # <1>
 ```
 
@@ -607,13 +606,13 @@ Explore the rainfall data to find one station where there *appears* to be a posi
 
 **Station with apparent positive trend:**
 
-*Write your answer here. Include the station name/ID and explain what you observe in the data that suggests an increasing trend.*
+*Write your answer here. Include the station name/ID and explain what you observe in the data that suggests an increasing trend.* Beaumont City, sttion 41-0611 appears to have a positive trend. There appear to be more values between 5-10 inches of maximum rainfall from 1950-100 than in 1900-1950. The highest value is in the last year recorded. 
 
 
 
 **Station with apparent negative trend:**
 
-*Write your answer here. Include the station name/ID and explain what you observe in the data that suggests a decreasing trend.*
+*Write your answer here. Include the station name/ID and explain what you observe in the data that suggests a decreasing trend.* There appears to be a slight decreasing rainfall trend in Lubbock, station 79-0114.The yers appear to be more closely clustered to 2 inches or below of annual maximum rainfall as the time series progresses, especially after 2000. 
 
 
 
@@ -624,25 +623,25 @@ Explore the rainfall data to find one station where there *appears* to be a posi
 *Record your starting parameters and the final parameters you chose after experimentation:*
 
 - Starting: $\mu = 4.0$, $\sigma = 1.3$, $\xi = 0.15$
-- Final: $\mu = \ldots$ $\sigma = \ldots$, $\xi = \ldots$
+- Final: $\mu = 3.5 \ldots$ $\sigma = 1.2 \ldots$, $\xi = .3 \ldots$
 
 **Parameter Effects:**
 
 **What happened when you increased/decreased $\mu$ (location parameter)?**
 
-*Test values like $\mu = 2.0, 4.0, 6.0$. Describe how the entire GEV curve shifted and how this affected the fit to your red data points.*
+*Test values like $\mu = 2.0, 4.0, 6.0$. Describe how the entire GEV curve shifted and how this affected the fit to your red data points.* mu = 4 was the best fit of these options to the data. 6 pushed the blue line above the red dots, while mu =2 set it below. 3.5 had the best fit. 
 
 
 
 **What happened when you increased/decreased $\sigma$ (scale parameter)?**
 
-*Test values like $\sigma = 0.8, 1.3, 2.0$. Describe how the curve became steeper/flatter and how this affected the spread of return levels.*
+*Test values like $\sigma = 0.8, 1.3, 2.0$. Describe how the curve became steeper/flatter and how this affected the spread of return levels.* Higher levels of sigma resulted in a steeper curve, while lower values produced a flatter line.
 
 
 
 **What happened when you changed $\xi$ (shape parameter)?** 
 
-*Test $\xi = -0.1$ (light tail), $\xi = 0.0$ (Gumbel), $\xi = 0.15$, $\xi = 0.3$ (heavy tail). Focus on how the high return period end (right side) of the curve changed.*
+*Test $\xi = -0.1$ (light tail), $\xi = 0.0$ (Gumbel), $\xi = 0.15$, $\xi = 0.3$ (heavy tail). Focus on how the high return period end (right side) of the curve changed.* The tail behavior changes. For the light tail, the curve goes down, while at zero it remains flat. For higher numbers it increases exponentially. 
 
 
 
@@ -651,12 +650,12 @@ Explore the rainfall data to find one station where there *appears* to be a posi
 **How well does your best-fit GEV distribution represent the closest station's data?**
 
 *Do the red dots follow your blue curve? Where are the biggest deviations?*
-
+The red dots mostly follow the blue curve. The biggest deviations are found for return periods 20-50 years. 
 
 
 **Additional observations:**
 
-*Optional: Add any other interesting patterns you notice in the return period analysis.*
+*Optional: Add any other interesting patterns you notice in the return period analysis.* It is difficult to get the shape exactly right so that the patterns match each other. 
 
 
 
